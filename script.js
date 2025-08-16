@@ -90,12 +90,13 @@ function selectAnswer(e){
     const isCorrect = selectBtn.dataset.correct === "true";
     if(isCorrect){
         selectBtn.classList.add("correct");
+        score++;
     }
     else{
         selectBtn.classList.add("incorrect");
     }
 
-    
+
     Array.from(answerButton.children).forEach(button => {
         if(button.dataset.correct === "true"){
             button.classList.add("correct");
@@ -105,6 +106,31 @@ function selectAnswer(e){
     nextButton.style.display = "block";
 }
 
+function showScore(){
+    resetState();
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML  = "Play Again";
+    nextButton.style.display = "block";
+}
+
+function handlenextButton(){
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length){
+        showQuestion();
+    }
+    else{
+       showScore();
+    }
+}
+
+nextButton.addEventListener("click", ()=>{
+    if(currentQuestionIndex < questions.length){
+        handlenextButton();
+    }
+    else{
+        startQuiz();
+    }
+})
 
 startQuiz()
 
