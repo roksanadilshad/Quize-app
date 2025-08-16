@@ -32,7 +32,7 @@ const questions = [
             {text:"Kalahari", correct:false},
             {text:"Gobi", correct:false},
             {text:"Sahara", correct:false},
-            {text:"Antartica", correct:true},
+            {text:"Antaractic", correct:true},
         ]
     },
     {
